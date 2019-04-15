@@ -1,0 +1,87 @@
+{% block content %}
+    {% load static %}
+    <div class="container">
+        <div class="col-lg-8 text-center mx-auto">
+            <img src="{% static 'img/mood-01.svg' %}" alt="humeur" width="30%">
+        </div>
+        <div class="row1">
+            <div class="h-5 col-lg-8 mx-auto text-center">
+                <div class="stars" data-rating="{{ u|safe }}">
+                    <a href="{% url 'save' mood_id=1 %}"><span class="star">&nbsp;</span></a>
+                    <a href="{% url 'save' mood_id=2 %}"><span class="star">&nbsp;</span></a>
+                    <a href="{% url 'save' mood_id=3 %}"><span class="star">&nbsp;</span></a>
+                    <a href="{% url 'save' mood_id=4 %}"><span class="star">&nbsp;</span></a>
+                    <a href="{% url 'save' mood_id=5 %}"><span class="star">&nbsp;</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="row1">
+        {% if participated|length > 0 %}
+            <div class="col-lg-8 mx-auto text-center m-t-2">
+                <a href="{% url 'item' top_id=1 %}">
+                    <img class="m-b-r" src="{% static 'img/musique.svg' %}" alt="musique" width="60px">
+                </a>
+                <a href="{% url 'item' top_id=2 %}">
+                    <img class="m-b-r" src="{% static 'img/livre.svg' %}" alt="livre" width="60px">
+                </a>
+                <a href="{% url 'item' top_id=3 %}">
+                    <img src="{% static 'img/serie.svg' %}" alt="serie" width="60px">
+                </a>
+            </div>
+        {% else %}
+            <div class="col-lg-8 mx-auto text-center m-t-2">
+                <a href="{% url 'item' top_id=3 %}">
+                    <img class="m-b-r" src="{% static 'img/serie.svg' %}" alt="serie" width="75px">
+                </a>
+                <a href="{% url 'item' top_id=2 %}">
+                    <img src="{% static 'img/livre.svg' %}" alt="livre" width="75px">
+                </a>
+            </div>
+            <div class="col-lg-8 mx-auto text-center m-t-2">
+                <a href="{% url 'item' top_id=1 %}">
+                    <img class="m-b-r" src="{% static 'img/musique.svg' %}" alt="musique" width="75px">
+                </a>
+                <a href="{% url 'new_sentence' dash_id=dash.id %}">
+                    <img src="{% static 'img/crane.svg' %}" alt="cadavre et ski" width="75px">
+                </a>
+            </div>
+        {% endif %}
+        </div>
+        {% if topic %}
+            {% if participated_topic|length == 0 %}
+                <div class="row1">
+                    <div class="col-lg-8 m-t-2 mx-auto text-center">
+                        <div id="c-s-l" class="mx-auto">
+                            <div >{{ topic.subject }}</div>
+                                <div class="list-inline-item">
+                                    <a href="{% url 'save_vote' topic_id=topic.id slug=topic.reply_1 %}">
+                                        <span>{{ topic.reply_1|capfirst }} ?</span>
+                                    </a>
+                                    <a href="{% url 'save_vote' topic_id=topic.id slug=topic.reply_2 %}">
+                                        <span>{{ topic.reply_2|capfirst }} ?</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            {% endif %}
+        {% endif %}
+        {% if message_received %}
+            <div class="row1">
+                <div class="col-lg-8 m-t-2 mx-auto text-center">
+                    <div id="c-s-l" class="mx-auto">
+                        <div class="d-block small">
+                            <i>Bungalow Team à {{ message_received.created_at|date:"P" }}</i>
+                        </div>
+                        <div>{{ message_received.content }}</div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="{% static 'js/stars.js' %}"></script>
+    <script src="{% static 'js/refresh.js' %}"></script>
+
+{% endblock %}

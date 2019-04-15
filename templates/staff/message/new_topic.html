@@ -1,0 +1,21 @@
+{% extends 'staff/base.html' %}
+{% block content %}
+
+     <div class="container">
+        <div class="card card-login mx-auto mt-5">
+            <div class="card-header">Topic</div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-group">
+                        <div>
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                        </div>
+                    </div>
+                    <input class="btn btn-primary btn-block" type="submit" value="Enregistrer"/>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

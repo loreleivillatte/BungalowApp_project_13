@@ -1,0 +1,9 @@
+env/
+.idea/
+Bungalow_app/__pycache__
+guest/__pycache__/
+share/__pycache__/
+staff/__pycache__/
+guest/migrations/__pycache__/
+share/migrations/__pycache__/
+staff/migrations/__pycache__/

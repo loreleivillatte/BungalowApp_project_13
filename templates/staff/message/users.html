@@ -1,0 +1,38 @@
+{% extends 'staff/base.html' %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fas fa-table"></i>
+                Utilisateurs</div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Speudo</th>
+                            <th>Message reçu</th>
+                            <th>Choisir</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for u in  select_user %}
+                            <tr>
+                                <td>{{ u.id }}</td>
+                                <td>{{ u.username }}</td>
+                                {% if u.messages_received == None %}
+                                <td>non</td>
+                                {% else %}
+                                    <td>oui</td>
+                                {% endif %}
+                                <th><a href="{% url 'sent_user' user_id=u.id %}">Choisir</a></th>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

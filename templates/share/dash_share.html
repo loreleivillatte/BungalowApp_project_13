@@ -1,0 +1,77 @@
+{% extends 'share/base_share.html' %}
+{% load static %}
+{% block content %}
+    <div class="container-fluid mx-auto">
+        <div class="row">
+            {% include 'share/stars.html' %}
+        </div>
+        <div class="row m-t-2">
+            <div id="share" class="col-xl-5 col-sm-6 mx-auto m-t-2">
+                <div>
+                    <div class="text-center"><img src="{% static 'img/topl-01.svg' %}" alt="top livre" width="30%"></div>
+                    <div class="d-flex justify-content-around">
+                        <div>
+                            {% for b in book_a %}
+                                <li class="list-unstyled"><span>{{ forloop.counter }}</span> {{ b.list__author|title }}</li>
+                            {% endfor %}
+                        </div>
+                        <div>
+                            {% for b in book_n %}
+                                <li class="list-unstyled"><span>{{ forloop.counter }}</span>  {{ b.list__name|capfirst }}</li>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="share" class="col-xl-5 col-sm-6 mx-auto m-t-2">
+                <div>
+                    <div class="text-center"><img src="{% static 'img/topm-02.svg' %}" alt="top musique" width="30%"></div>
+                    <div class="d-flex justify-content-around">
+                        <div>
+                            {% for m in music_a %}
+                                <li class="list-unstyled"><span>{{ forloop.counter }}</span> {{ m.list__author|title }}</li>
+                            {% endfor %}
+                        </div>
+                        <div>
+                            {% for m in music_n %}
+                                <li class="list-unstyled"><span>{{ forloop.counter }}</span> {{ m.list__name|capfirst }}</li>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row m-t-2">
+            <div id="share" class="col-xl-5 col-sm-6 mx-auto m-t-2">
+                <div>
+                    <div class="text-center"><img src="{% static 'img/tops-03.svg' %}" alt="top serie" width="30%"></div>
+                    <div class="text-center">
+                        {% for s in serie_n %}
+                            <li class="list-unstyled"><span>{{ forloop.counter }}</span>  {{ s.list__name|capfirst }}</li>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div id="share" class="col-xl-5 col-sm-6 mx-auto m-t-2">
+                <div class="text-center"><img src="{% static 'img/top_question.svg' %}" alt="question" width="30%"></div>
+                <div class="text-center">
+                    {% for t in top_val %}
+                        <p>{{ t.subject|capfirst }} {{ t.reply_1 }} ? {{ t.reply_2 }} ?</p>
+                    {% endfor %}
+                </div>
+                <hr>
+                <div class="text-center"><img src="{% static 'img/top_resultat.svg' %}" alt="question" width="30%"></div>
+                <div class="text-center">
+                    {% for r in reply_count %}
+                        <p>{{ r.topic__choice__submit|capfirst }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% comment %}
+<script src="{% static 'js/stars.js' %}"></script>
+{% endcomment %}
+<script src="{% static 'js/refresh.js' %}"></script>
+
+{% endblock %}

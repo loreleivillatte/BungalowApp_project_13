@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+{% load static %}
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>BungalowBox</title>
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:300,400,700" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
+    <link href="{% static 'vendor/datatables/dataTables.bootstrap4.css' %}" rel="stylesheet">
+    <link href="{% static 'css/personal.css' %}" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="{% static 'css/sb-admin.css' %}" rel="stylesheet">
+
+</head>
+
+<body id="page-top" class="img-nav mx-auto">
+    {% if messages %}
+        {% for message in messages %}
+            <div id="message">
+                {% if 'success' in message.tags %}
+                    <p class="alert alert-info">{{ message }}</p>
+                {% else %}
+                    <p class="alert alert-danger">{{ message }}</p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% endif %}
+<nav class="navbar navbar-expand navbar-dark static-top mx-auto">
+    <a id="m-r-0" class="navbar-brand ml-auto" href="{% url 'index' %}"><img src="{% static 'img/h_box.svg' %}" alt="bungalow_box" width="100%"/></a>
+    <!-- Navbar -->
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" href="#" id="c-w userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="text-white fas fa-user-circle fa-fw"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                {% if user.is_authenticated %}
+                    <p class="dropdown-item" >{{ user.username }}</p>
+                    <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                {% else %}
+            <a class="dropdown-item" href="{% url 'signup' %}">Créer un compte</a>
+            <a class="dropdown-item" href="{% url 'login' %}">Se connecter</a>
+            {% endif %}
+            </div>
+        </li>
+    </ul>
+
+</nav>
+
+<div id="wrapper mx-auto">
+
+    {% block content %}{% endblock %}
+
+</div>
+<!-- /#wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<script>
+    var message_ele = document.getElementById("message");
+
+    setTimeout(function(){
+        message_ele.style.display = "none";
+    }, 3000);
+</script>
+
+<!-- Bootstrap core JavaScript-->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+<!-- Custom scripts for all pages-->
+<script src="{% static 'js/sb-admin.min.js' %}"></script>
+
+</body>
+
+</html>

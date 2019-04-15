@@ -1,0 +1,43 @@
+{% extends 'staff/base.html' %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fas fa-table"></i>
+                Topics</div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>Sujet</th>
+                            <th>Choix 1</th>
+                            <th>Choix 2</th>
+                            <th>Participation</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            {% for s in sub %}
+                                {% if s.c >= 1 %}
+                                <td>{{ s.topic__subject }}</td>
+                                <td>{{ s.topic__reply_1 }}</td>
+                                <td>{{ s.topic__reply_2 }}</td>
+                                <td>{{ s.c }}</td>
+                                {% else %}
+                                    {% for e in empty %}
+                                        <td>{{ e.subject }}</td>
+                                        <td>{{ e.reply_1 }}</td>
+                                        <td>{{ e.reply_2 }}</td>
+                                        <td>0</td>
+                                    {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

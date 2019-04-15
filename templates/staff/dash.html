@@ -1,0 +1,14 @@
+{% extends 'staff/base.html' %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="card mb-3">
+            <div class="card-header">Cadavre et Ski</div>
+            <div class="card-body">
+                {% for post in posts %}
+                    <li class="list-unstyled">
+                        <span class="text-black-50">{{ forloop.counter }} :</span> {{ post.dash__post__sentence }}</li>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

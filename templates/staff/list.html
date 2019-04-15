@@ -1,0 +1,47 @@
+{% extends 'staff/base.html' %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fas fa-table"></i>
+                {% if top_id == 2 %}
+                    <span>Livre</span>
+                {% elif top_id == 3 %}
+                    <span>Série</span>
+                {% elif top_id == 1 %}
+                    <span>Musique</span>
+                {% endif %}
+            </div>
+            {% if top_id == 1 or top_id == 2 %}
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Vote</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for i in items %}
+                                <tr>
+                                    <td><i class="text-black-50">artiste :</i> {{ i.list__author|capfirst }}</td>
+                                    <td>{{ i.c }}</td>
+                                </tr>
+                            {% endfor %}
+                            {% for i in item %}
+                                <tr>
+                                    <td><i class="text-black-50">titre :</i> {{ i.list__name|capfirst }}</td>
+                                    <td>{{ i.c }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            {% elif top_id == 3 %}
+                {% include 'staff/serie.html' %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

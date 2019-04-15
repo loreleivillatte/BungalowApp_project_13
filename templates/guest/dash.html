@@ -1,0 +1,25 @@
+{% extends 'guest/base_guest.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="col-lg-8 mx-auto text-center">
+            <p class="m-t-2 d-block small mt-3 b-o text-justify">Tu connais le principe du cadavre exquis en dessin ? Ben la
+                c'est la même chose mais avec des mots. Tu peux mettre une phrase de 60 caractères maximum, cette phrase se
+                rajoutera à toutes celles des autres bungers. Les phrases sont affichées dans l'ordre chronologique .
+                A vous de vous organiser pour faire un texte cohérent... ou pas ^^</p>
+        </div>
+        <div id="form-tr" class="card card-login mx-auto mt-3">
+            <div class="card-body">
+                <form method="post">
+                    <div class="form-group">
+                        <div>
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                        </div>
+                    </div>
+                    <input id="bt-blue" class="btn btn-block" type="submit" value="Participer"/>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

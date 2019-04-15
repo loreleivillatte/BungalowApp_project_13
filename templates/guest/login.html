@@ -1,0 +1,25 @@
+{% extends 'guest/base_guest.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="card card-login mx-auto mt-5">
+            <div id="card-h" class="card-header">Login</div>
+            <div class="card-body">
+                <form method="post" action="{% url 'login' %}">
+                    <div class="form-group">
+                        <div>
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                        </div>
+                    </div>
+                    <input id="bt-blue" class="btn btn-block" type="submit" value="Valider"/>
+                </form>
+                <div class="text-center">
+                    <a class="d-block small mt-3" href="{% url 'signup' %}">Register an Account</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

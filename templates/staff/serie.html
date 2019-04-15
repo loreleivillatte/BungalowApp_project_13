@@ -1,0 +1,20 @@
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered" cellspacing="0">
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Vote</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in items %}
+                <tr>
+                    <td>{{ i.list__name }}</td>
+                    <td>{{ i.c }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

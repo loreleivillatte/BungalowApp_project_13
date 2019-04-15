@@ -1,0 +1,1 @@
+web: gunicorn Bungalow_app.wsgi
