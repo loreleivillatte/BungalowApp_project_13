@@ -30,7 +30,7 @@ else:
     DEBUG = True
 
 if os.environ.get('ENV') == 'PRODUCTION':
-    ALLOWED_HOSTS = ['bungalow_box.heroku.com']
+    ALLOWED_HOSTS = ['bungalow-box.herokuapp.com']
 else:
     ALLOWED_HOSTS = ['127.0.0.1']
 
@@ -142,6 +142,7 @@ if os.environ.get('ENV') == 'PRODUCTION':
     PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
     STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+    STATIC_URL = '/static/'
 
     # Extra places for collectstatic to find static files.
     STATICFILES_DIRS = (
